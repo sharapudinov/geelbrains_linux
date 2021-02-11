@@ -1,0 +1,49 @@
+sudo useradd newuser
+tail  -n1 /etc/passwd
+newuser:x:1001:1001::/home/newuser:/bin/sh
+tail  -n1 /etc/group
+newuser:x:1001:
+sudo userdel newuser
+addgroup new group
+sudo addgroup new_group
+Добавляется группа «new_group» (GID 1001) ...
+Готово.
+sudo userdel newuser
+sudo addgroup new_group
+Добавляется группа «new_group» (GID 1001) ...
+Готово.
+tail  -n1 /etc/group
+newuser:x:1002:
+sudo adduser  newuser
+Добавляется пользователь «newuser» ...
+Добавляется новая группа «newuser» (1002) ...
+Добавляется новый пользователь «newuser» (1001) в группу «newuser» ...
+Создаётся домашний каталог «/home/newuser» ...
+Копирование файлов из «/etc/skel» ...
+Новый пароль :
+Повторите ввод нового пароля :
+passwd: пароль успешно обновлён
+Изменение информации о пользователе newuser
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+        Полное имя []: Шамиль
+        Номер комнаты []: 1
+        Рабочий телефон []: 123456
+        Домашний телефон []: 654332
+        Другое []: ...
+chfn: имя «Шамиль» содержит не ASCII-символы
+Данная информация корректна? [Y/n] Д
+sudo usermod -a -G
+sudo usermod -a -G new_group newuser
+tail  -n1 /etc/passwd
+newuser:x:1001:1002:Шамиль,1,123456,654332,...:/home/newuser:/bin/bash
+sudo usermod -aG sudo newuser
+su newuser
+sudo whoami
+root
+sudo visudo
+nano ~/bashrc
+alias reboot='sudo reboot'
+alias poweroff='sudo poweroff'
+alias pm-hibernate='sudo pm-hibernate'
+alias hibernate='sudo pm-hibernate'
+alias shutdown='sudo shutdown'

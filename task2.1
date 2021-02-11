@@ -1,0 +1,9 @@
+mkdir students
+mkdir mentors
+touch students/students_list.txt
+touch mentors/mentors_list.txt
+mv mentors/mentors_list.txt students
+rm -d mentors
+mv students  students_and_mentors
+rm -r students_and_mentors
+
